@@ -4,13 +4,13 @@
  * @version 1.0.0 March 2022
  */
 
- 'use strict'
 
 
-document.getElementById('music_forms').addEventListener('submit', function(e){
+document.getElementById('musicForms').addEventListener('submit', function(e){
     e.preventDefault();
     const musicdata = getFormData();
     insertRow(musicdata);
+    tableVisible();
     resetForm();
 })
 
@@ -32,7 +32,7 @@ function insertRow(musicData) {
     const cell3 = newRow.insertCell(2);
     cell3.innerHTML = musicData.year;
     const cell4 = newRow.insertCell(3);
-    cell4.innerHTML = `<button onClick="deleteRow(this)">Delete</button>`;
+    cell4.innerHTML = `<button class="deleteButton" onClick="deleteRow(this)">Delete</button>`;
 }
 
 
@@ -46,4 +46,9 @@ function deleteRow(td){
     const row = td.parentElement.parentElement;
     document.getElementById("musicList").deleteRow(row.rowIndex);
     resetForm();
+}
+
+function tableVisible(){
+    document.getElementById("musicList").style.visibility = "visible";
+
 }
